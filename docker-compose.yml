@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  course_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: course
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+      - redis_data:/var/lib/redis
+      - mongo_data:/data/db
+    ports:
+      - "9042:9042"
+      - "6379:6379"
+      - "27017:27017"
+
+volumes:
+  cassandra_data:
+  redis_data:
+  mongo_data:
